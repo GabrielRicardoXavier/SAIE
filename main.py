@@ -135,7 +135,7 @@ def abrirAditamento():
     AlunoAditamentocbbx = ttk.Combobox(novoTrabalhoAditamento, width=40, height=1, textvariable=AlunoAditamento)
     AlunoAditamentocbbx.place(x=100, y=60)
 
-    comandoAlunoAditamento = "SELECT TOP (1000) Aluno from AlunosTabela"
+    comandoAlunoAditamento = "SELECT TOP (1000) * from AlunosTabela"
     cursor.execute(comandoAlunoAditamento)
 
     for row in cursor.fetchall():
@@ -273,7 +273,13 @@ def abrirTurma():
 
     for row in cursor.fetchall():
         textoTurma = f'{row.Turma}'
-        canvas3['value'] = textoTurma
+        cb101 = Checkbutton(fr_rolagem3, text=textoTurma, width=200, anchor=W)
+        cb101.grid(row=1, column=1)
+
+
+        #fr_rolagem3['value'] = textoTurma
+
+
 
     ### criando a barra de rolagem ###
     barra_de_rolagem = ttk.Scrollbar(fr_rolagem3, orient=VERTICAL, command=canvas3.yview)
